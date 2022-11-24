@@ -1,4 +1,4 @@
-* {
+body,a {
     background-color: #000;
     color:#32cd32;
     text-align: center;
@@ -8,6 +8,23 @@
     color:#32cd32;
     font-family: monospace;
     font-size: 16;
+}
+.welcome.stuff {
+  list-style-type: arrow;
+  font-size: 20;
+  
+}
+.welcome.box {
+  float: left;
+  width: 50%;
+  background-color: #0d0d0d;
+  text-align: left;
+}
+.welcome.wip {
+  float: right;
+  width: 40%;
+  background-color: #0d0d0d;
+  text-align: right;
 }
 
 .titlebar {
@@ -21,6 +38,7 @@
     font-family: monospace;
 }
 .titlebar.btn {
+    animation: glitch 2.5s linear infinite;
     font-family: "Rubik", monospace;
     float:left;
     display: block;
@@ -83,4 +101,10 @@
     62%{
       transform: translate(-22px,5px) skew(21deg); 
     }
+  }
+
+  @counter-style arrow {
+    system: cyclic;
+    symbols: ">>";
+    suffix: " ";
   }
