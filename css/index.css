@@ -3,6 +3,14 @@ body,a {
     color:#32cd32;
     text-align: center;
 }
+button {
+  background-color: #000;
+  border-color: #32cd32;
+  color: #32cd32;
+}
+button::hover {
+  background-color: #0d0d0d;
+}
 
 .welcome.text {
     color:#32cd32;
