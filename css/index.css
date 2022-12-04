@@ -10,7 +10,6 @@ body {
   /* color:#32cd32; */
   color: #ff0000;
   text-align: center;
-  color: #ff0000;
   font-family: monospace;
   font-size: 16;
 }
@@ -20,41 +19,27 @@ a {
   color: #ea3807;
 }
 
-
-.welcome.stuff {
+li {
   list-style-type: arrow;
-  font-size: 20;
 }
 
-.welcome.box {
-  float: left;
-  width: 50%;
-  /* background-color: #0d0d0d; */
-  text-align: center;
-
-  /* border-width: 5px; */
-}
-
-.welcome.wip {
-  float: right;
-  width: 40%;
-  /* background-color: #0d0d0d; */
-  text-align: center;
-}
-.updates {
-  float: inline-start;
-  width: 50%;
+section {
+  overflow: hidden;
   background-color: rgba(0,0,0,0.5);
-  font-family: monospace;
-  padding-left: 19px;
+}
+
+.skills {
+  text-align: center;
+}
+.skills.li {
+  font-size: 20;
+  background-color: transparent;
+}
+
+.updates {
   color: #32cd32;
 }
 
-.clock {
-  position:absolute;
-  width: 20%;
-  height: 20%;
-}
 
 .titlebar {
   overflow: hidden;
