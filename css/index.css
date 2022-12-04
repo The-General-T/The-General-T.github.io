@@ -1,3 +1,8 @@
+@counter-style arrow {
+  system: cyclic;
+  symbols: ">>";
+  suffix: " ";
+}
 
 body {
   /* background-color: #000; */
@@ -5,6 +10,9 @@ body {
   /* color:#32cd32; */
   color: #ff0000;
   text-align: center;
+  color: #ff0000;
+  font-family: monospace;
+  font-size: 16;
 }
 
 a {
@@ -12,23 +20,10 @@ a {
   color: #ea3807;
 }
 
-button {
-  /* background-color: #000; */
-  border-color: #32cd32;
-  color: #ea3807;
-}
-
-.welcome.text {
-  /* color:#32cd32; */
-  color: #ff0000;
-  font-family: monospace;
-  font-size: 16;
-}
 
 .welcome.stuff {
   list-style-type: arrow;
   font-size: 20;
-
 }
 
 .welcome.box {
@@ -55,6 +50,12 @@ button {
   color: #32cd32;
 }
 
+.clock {
+  position:absolute;
+  width: 20%;
+  height: 20%;
+}
+
 .titlebar {
   overflow: hidden;
   list-style-type: none;
@@ -62,6 +63,7 @@ button {
   padding: 0;
   /* background-color: #0d0d0d;   */
   background-color: rgba(0,0,0,0.5);
+  background-color: transparent;
   /* color: #32cd32; */
   color: #ea3807;
   font-size: 20px;
@@ -79,6 +81,24 @@ button {
 .funky {
   animation: glitch 3s linear infinite;
 }
+.funky:before,
+.funky:after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+.funky:before {
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+.funky:after {
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+
 
 @keyframes glitch {
 
@@ -95,19 +115,6 @@ button {
   62% {
     transform: translate(0, 0) skew(5deg);
   }
-}
-
-.funky:before,
-.funky:after {
-  content: attr(title);
-  position: absolute;
-  left: 0;
-}
-
-.funky:before {
-  animation: glitchTop 1s linear infinite;
-  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
 }
 
 @keyframes glitchTop {
@@ -127,12 +134,6 @@ button {
   }
 }
 
-.funky:after {
-  animation: glitchBotom 1.5s linear infinite;
-  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-}
-
 @keyframes glitchBotom {
 
   2%,
@@ -148,12 +149,4 @@ button {
   62% {
     transform: translate(-22px, 5px) skew(21deg);
   }
-}
-
-
-
-@counter-style arrow {
-  system: cyclic;
-  symbols: ">>";
-  suffix: " ";
 }
