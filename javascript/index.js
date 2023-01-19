@@ -13,10 +13,3 @@ function startTime() {
     if (i < 10) {i = "0" + i}; 
     return i;
   }
-
-
-console.log("Cookies: " + navigator.cookieEnabled);
-console.log("Language: " + navigator.language);
-console.log("Platform: " + navigator.platform);
-console.log("User Agent: " + navigator.userAgent);
-console.log("Webdriver: " + navigator.webdriver);
