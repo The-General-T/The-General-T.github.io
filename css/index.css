@@ -1,6 +1,6 @@
 @counter-style arrow {
   system: cyclic;
-  symbols: ">>";
+  symbols: " ";
   suffix: " ";
 }
 
@@ -34,6 +34,7 @@ section {
 .skills.li {
   font-size: 20;
   background-color: transparent;
+  text-align: center;
 }
 
 .updates {
