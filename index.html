@@ -5,14 +5,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="My website about">
+  <meta name="description" content="General T. - A man of mystery">
   <link rel="stylesheet" href="/css/index.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
   <title>Home</title>
 </head>
 
-<body onload="startTime()">
+<body onload="startTime(),consoleText(['A Music Man', 'Total Nerd', 'Developer'], 'text',['#32cd32']);">
   <script src="/javascript/index.js"></script>
   <!-- Title Bar -->
   <header>
@@ -24,7 +24,7 @@
       <!-- <p style="text-align:right">© General Tromboni 2023</p> -->
     </ul>
     <div class="clock" id="txt"></div>
-    <h1 class="funky">Why, hello there.</h1>
+    <h1><span id='text'></span><div class='console-underscore' id='console'>&#95;</div></h1>
     <p>My name is General Tromboni, and I make music and do backend development.</p>
   </header>
 
