@@ -6,13 +6,33 @@
 @import url(https://fonts.googleapis.com/css?family=Khula:700);
 
 body {
-  background-color: #000;
-  /* background-image: url(/images/xmas-bckg.jpg); */
-  /* color:#32cd32; */
-  color: #32cd32;
-  text-align: center;
-  font-family: monospace;
-  font-size: 16;
+  background-color: black;
+  background-image: radial-gradient(
+    rgba(0, 150, 0, 0.75), black 120%
+  );
+  height: 100vh;
+  color:#32cd32;
+  font: 1.3rem Inconsolata, monospace;
+  text-shadow: 0 0 5px #C8C8C8;
+}
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(black, 0.15),
+    rgba(black, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+::selection {
+  background: #0080FF;
+  text-shadow: none;
 }
 
 a {
@@ -26,7 +46,7 @@ li {
 
 section {
   overflow: hidden;
-  background-color: rgba(0,0,0,0.5);
+  /* background-color: rgba(0,0,0,0.5); */
 }
 
 .skills {
