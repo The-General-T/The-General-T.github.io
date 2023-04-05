@@ -1,3 +1,7 @@
+* {
+  text-align: center;
+}
+
 @counter-style arrow {
   system: cyclic;
   symbols: " ";
@@ -15,7 +19,7 @@ body {
   font: 1.3rem Inconsolata, monospace;
   text-shadow: 0 0 5px #C8C8C8;
 }
-body::after {
+/* body::after {
   content: "";
   position: absolute;
   top: 0;
@@ -29,7 +33,7 @@ body::after {
     transparent 1px,
     transparent 2px
   );
-}
+} */
 ::selection {
   background: #0080FF;
   text-shadow: none;
@@ -56,10 +60,6 @@ section {
   font-size: 20;
   background-color: transparent;
   text-align: center;
-}
-
-.updates {
-  color: #32cd32;
 }
 
 
@@ -109,7 +109,6 @@ section {
   opacity:0;
 }
 .console-container {
- 
   font-family:Khula;
   font-size:4em;
   text-align:center;
