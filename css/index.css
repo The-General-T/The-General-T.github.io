@@ -157,6 +157,8 @@ html { font-family: var(--ff-poppins); }
 
 body { background: var(--smoky-black); }
 
+a::before, a::after { color: var(--bg-gradient-yellow-1) }
+
 
 
 
