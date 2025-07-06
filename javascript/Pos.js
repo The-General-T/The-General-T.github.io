@@ -8,6 +8,7 @@ const header = document.getElementById("transactionHeader");
 const userManager = new UserManager();
 
 const addItemBtn = document.getElementById("addItemBtn");
+const taxexemptbtn = document.getElementById("taxexemptbtn");
 const clearTransactionBtn = document.getElementById("clearTransactionBtn");
 const completeTransactionBtn = document.getElementById("completeTransactionBtn");
 const managerButtons = document.querySelectorAll("button.manager");
@@ -48,6 +49,26 @@ function addItem() {
   }
 
   items.push({ name, price });
+  total += price*1.07;
+
+  renderTransaction();
+  itemNameInput.value = "";
+  itemPriceInput.value = "";
+  itemNameInput.focus();
+}
+function addItemTE() {
+  const name = itemNameInput.value.trim();
+  const price = parseFloat(itemPriceInput.value);
+  var ishouldntneedthis = "==== TAX EXEMPT NEXT ITEM ====";
+
+  if (!name || isNaN(price) || price < 0) {
+    alert("Enter valid item name and price.");
+    return;
+  }
+
+  items.push({ name: ishouldntneedthis, price: 0 }); // Add tax exempt note
+  items.push({ name, price });
+  
   total += price;
 
   renderTransaction();
@@ -81,32 +102,40 @@ function completeTransaction() {
   const date = now.toLocaleDateString();
   const time = now.toLocaleTimeString();
 
-  const receiptLines = [];
+  const operatorID = loggedInUsername.toLowerCase().slice(0, 3) + "001";
 
-  receiptLines.push("==== General T. Invoiving ====");
-  receiptLines.push(`Operator ID: ${loggedInUsername}\nDate: ${date} Time: ${time}`);
-  receiptLines.push("-------------------------");
+  const itemsList = items.map(item => `
+    <div class="receipt-item">
+      <span>${item.name}</span>
+      <span>$${item.price.toFixed(2)}</span>
+    </div>
+  `).join("");
 
-  items.forEach((item, index) => {
-    const line = `${index + 1}. ${item.name} - $${item.price.toFixed(2)}`;
-    receiptLines.push(line);
-  });
+  const html = `
+    <div class="receipt-header">
+      <h1>General T. Invoicing</h1>
+      <p><strong>Operator ID:</strong> ${loggedInUsername}</p>
+      <p><strong>Date/Time:</strong> ${date} ${time}</p>
+    </div>
 
-  receiptLines.push("-------------------------");
-  receiptLines.push(`TOTAL: $${total.toFixed(2)}`);
-  receiptLines.push(" ");
-  receiptLines.push(" ");
-  receiptLines.push(" ");
-  receiptLines.push("X_______________________________________");
-  receiptLines.push("Have a Great day!");
+    <div class="receipt-body">
+      ${itemsList}
+    </div>
 
-  const receiptText = receiptLines.join("\n");
+    <div class="receipt-footer">
+      <div class="receipt-total">
+        <strong>Total:</strong> $${total.toFixed(2)}
+      </div>
+      <div class="signature-line">
+        Signature: ____________________________________
+      </div>
+      <p class="receipt-thankyou">Thank you for your business!</p>
+    </div>
+  `;
 
-  const receiptOutput = document.getElementById("receiptOutput");
-  receiptOutput.innerHTML = receiptText.replace(/\n/g, "<br>");
-
-  alert("Transaction Complete! Click 'Print Receipt' to finish.");
+  document.getElementById("receiptOutput").innerHTML = html;
 }
+
 function printReceipt() {
   const receiptContent = document.getElementById("receiptOutput").innerHTML;
 
@@ -143,6 +172,21 @@ function printReceipt() {
   `);
   printWindow.document.close();
 }
+function downloadReceiptPDF() {
+  const element = document.getElementById("receiptWrapper");
+
+  const opt = {
+  margin: 0,
+  filename: `receipt-${Date.now()}.pdf`,
+  image: { type: 'jpeg', quality: 0.98 },
+  html2canvas: { scale: 2, scrollY: 0 },
+  jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+  pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+};
+
+  html2pdf().set(opt).from(element).save();
+}
+
 
 // Manager function authorization with override logic
 function managerFunction(action) {
@@ -154,9 +198,9 @@ function managerFunction(action) {
     // Prompt for manager override
     const usernamePrompt = prompt("Manager Username:");
     const passwordPrompt = prompt("Manager Password:");
-
+    
     const user = userManager.authenticate(usernamePrompt, passwordPrompt);
-
+    
     if (user && user.isManager) {
       alert(`Manager Override Approved: ${action}`);
       runManagerAction(action);
@@ -171,40 +215,40 @@ function runManagerAction(action) {
     case "Override Price":
       overridePricePrompt();
       break;
-    case "View Reports":
-      viewReports();
-      break;
-    case "Refund Transaction":
-      refundTransaction();
-      break;
-    default:
-      alert("Unknown manager action");
-  }
-}
-
-// Demo: Override Price
-function overridePricePrompt() {
-  if (items.length === 0) {
-    alert("No items to override price for.");
-    return;
-  }
-
-  const indexStr = prompt(`Enter item number to override (1 to ${items.length}):`);
-  const index = parseInt(indexStr) - 1;
-
+      case "View Reports":
+        viewReports();
+        break;
+        case "Refund Transaction":
+          refundTransaction();
+          break;
+          default:
+            alert("Unknown manager action");
+          }
+        }
+        
+        // Demo: Override Price
+        function overridePricePrompt() {
+          if (items.length === 0) {
+            alert("No items to override price for.");
+            return;
+          }
+          
+          const indexStr = prompt(`Enter item number to override (1 to ${items.length}):`);
+          const index = parseInt(indexStr) - 1;
+          
   if (isNaN(index) || index < 0 || index >= items.length) {
     alert("Invalid item number.");
     return;
   }
-
+  
   const newPriceStr = prompt(`Enter new price for "${items[index].name}":`);
   const newPrice = parseFloat(newPriceStr);
-
+  
   if (isNaN(newPrice) || newPrice < 0) {
     alert("Invalid price.");
     return;
   }
-
+  
   items[index].price = newPrice;
   recalculateTotal();
   renderTransaction();
@@ -231,6 +275,7 @@ function recalculateTotal() {
 
 // Event listeners
 addItemBtn.addEventListener("click", addItem);
+taxexemptbtn.addEventListener("click", addItemTE);
 clearTransactionBtn.addEventListener("click", clearTransaction);
 completeTransactionBtn.addEventListener("click", completeTransaction);
 
@@ -242,5 +287,7 @@ managerButtons.forEach(button => {
 });
 window.printReceipt = printReceipt;
 window.addItem = addItem;
+window.addItemTE = addItemTE;
 window.clearTransaction = clearTransaction;
 window.completeTransaction = completeTransaction;
+window.downloadReceiptPDF = downloadReceiptPDF;

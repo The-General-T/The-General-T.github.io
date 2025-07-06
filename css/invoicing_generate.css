@@ -121,6 +121,7 @@ button.manager:hover {
   font-family: monospace;
   white-space: pre-wrap;
   color: #00ffcc;
+  text-align: center;
 }
 .print-btn {
   margin-top: 1rem;
@@ -134,4 +135,47 @@ button.manager:hover {
 }
 .print-btn:hover {
   background-color: #00ddb3;
+}
+
+#receiptWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.receipt-page {
+  width: 700px;
+  height: 10in; /* Fill entire vertical page */
+  padding: 40px;
+  box-sizing: border-box;
+  background: white;
+  color: black;
+  font-family: 'Courier New', monospace;
+  border: 2px solid #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* distributes header/body/footer */
+}
+
+/* Optional content formatting */
+.receipt-header,
+.receipt-footer,
+.receipt-body {
+  margin-bottom: 20px 0;
+}
+
+.receipt-header h1 {
+  text-align: center;
+  margin: 0;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.receipt-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dotted #ccc;
+  padding: 4px 0;
 }

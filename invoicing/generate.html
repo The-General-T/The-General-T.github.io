@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Generate Invoice</title>
   <link rel="stylesheet" href="../css/invoicing_generate.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
 </head>
+
 <body>
   <div class="transaction-container">
 
@@ -19,6 +23,7 @@
       <input type="text" id="itemName" placeholder="Item Name" />
       <input type="number" id="itemPrice" placeholder="Price ($)" />
       <button id="addItemBtn">Add Item</button>
+      <button id="taxexemptbtn">Add Tax Exempt</button>
     </div>
 
     <div class="transaction-list" id="transactionList">
@@ -33,8 +38,15 @@
       <button id="clearTransactionBtn">Clear Transaction</button>
       <button id="completeTransactionBtn">Complete Transaction</button>
     </div>
-    <div class="receipt" id="receiptOutput"></div>
+<div id="receiptWrapper">
+  <div id="receiptOutput" class="receipt-page">
+    <div class="receipt-header">...</div>
+    <div class="receipt-body">...</div>
+    <div class="receipt-footer">...</div>
+  </div>
+</div>
     <button onclick="printReceipt()" class="print-btn">Print Receipt</button>
+    <button onclick="downloadReceiptPDF()">Download PDF</button>
     <button onclick="window.location.href = `../index.html`">Log Out</button>
 
 
@@ -49,4 +61,5 @@
 
   <script type="module" src="../javascript/Pos.js"></script>
 </body>
+
 </html>
