@@ -121,6 +121,7 @@ button.manager:hover {
   font-family: monospace;
   white-space: pre-wrap;
   color: #00ffcc;
+  text-align: center;
 }
 .print-btn {
   margin-top: 1rem;
