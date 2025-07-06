@@ -83,7 +83,16 @@ function completeTransaction() {
 
   const receiptLines = [];
 
-  receiptLines.push("==== General T. Invoiving ====");
+   receiptLines.push(`
+   _____  _______   _____                     _        _               
+  / ____||__   __| |_   _|                   (_)      (_)              
+ | |  __    | |      | |   _ __ __   __ ___   _   ___  _  _ __    __ _ 
+ | | |_ |   | |      | |  | '_ \\ \\ / // _ \\ | | / __|| || '_ \\  / _\` |
+ | |__| | _ | | _   _| |_ | | | |\\ V /| (_) || || (__ | || | | || (_| |
+  \\_____|(_)|_|(_) |_____||_| |_| \\_/  \\___/ |_| \\___||_||_| |_| \\__, |
+                                                                  __/ |
+                                                                 |___/ 
+ `);
   receiptLines.push(`Operator ID: ${loggedInUsername}\nDate: ${date} Time: ${time}`);
   receiptLines.push("-------------------------");
 
