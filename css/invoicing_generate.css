@@ -1,0 +1,137 @@
+body {
+  background-color: #121212;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 2rem;
+}
+.transaction-container {
+  max-width: 900px;
+  margin: auto;
+}
+.transaction-header {
+  background-color: #1e1e1e;
+  color: #00ffcc;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+h1 {
+  text-align: center;
+  color: #00ffcc;
+  margin-bottom: 2rem;
+}
+.input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+.input-group input {
+  flex: 1;
+  padding: 0.8rem;
+  font-size: 1rem;
+  background-color: #2e2e2e;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+}
+.input-group button {
+  flex: none;
+  padding: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #00ffcc;
+  border: none;
+  color: #000;
+  margin-left: 0.5rem;
+}
+.input-group button:hover {
+  background-color: #00ddb3;
+}
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+button {
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #00ffcc;
+  color: #000;
+  transition: background-color 0.3s;
+}
+button:hover {
+  background-color: #00ddb3;
+}
+button.manager {
+  background-color: #444;
+  color: white;
+}
+button.manager:hover {
+  background-color: #ff5c5c;
+  color: white;
+}
+.transaction-list {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+.transaction-list h2 {
+  color: #00ffcc;
+  margin-bottom: 1rem;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #333;
+  padding: 0.5rem 0;
+}
+.item:last-child {
+  border-bottom: none;
+}
+.total {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: right;
+}
+.manager-header {
+  color: #00ffcc;
+  margin-top: 2rem;
+}
+.receipt {
+  background-color: #1a1a1a;
+  border: 1px dashed #00ffcc;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 2rem;
+  font-family: monospace;
+  white-space: pre-wrap;
+  color: #00ffcc;
+}
+.print-btn {
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  font-weight: bold;
+  border-radius: 8px;
+  background-color: #00ffcc;
+  color: #000;
+  border: none;
+  cursor: pointer;
+}
+.print-btn:hover {
+  background-color: #00ddb3;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Generate Invoice</title>
+  <link rel="stylesheet" href="../css/invoicing_generate.css" />
+</head>
+<body>
+  <div class="transaction-container">
+
+    <div id="transactionHeader" class="transaction-header">
+      CASHIER: ... | DATE/TIME: ...
+    </div>
+
+    <h1>Invoicing - Generate</h1>
+
+    <div class="input-group">
+      <input type="text" id="itemName" placeholder="Item Name" />
+      <input type="number" id="itemPrice" placeholder="Price ($)" />
+      <button id="addItemBtn">Add Item</button>
+    </div>
+
+    <div class="transaction-list" id="transactionList">
+      <h2>Items</h2>
+    </div>
+
+    <div class="total" id="totalDisplay">
+      Total: $0.00
+    </div>
+
+    <div class="button-grid">
+      <button id="clearTransactionBtn">Clear Transaction</button>
+      <button id="completeTransactionBtn">Complete Transaction</button>
+    </div>
+    <div class="receipt" id="receiptOutput"></div>
+    <button onclick="printReceipt()" class="print-btn">Print Receipt</button>
+    <button onclick="window.location.href = `../index.html`">Log Out</button>
+
+
+    <h2 class="manager-header">Manager Functions</h2>
+    <div class="button-grid">
+      <button class="manager" data-action="Override Price">Override Price</button>
+      <button class="manager" data-action="View Reports">View Reports</button>
+      <button class="manager" data-action="Refund Transaction">Refund Transaction</button>
+    </div>
+
+  </div>
+
+  <script type="module" src="../javascript/Pos.js"></script>
+</body>
+</html>
