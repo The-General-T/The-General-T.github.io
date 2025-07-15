@@ -2,261 +2,62 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>General T.</title>
-
-  <!--
-    - favicon
-  -->
-  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-
-  <!--
-    - custom css link
-  -->
-  <link rel="stylesheet" href="/css/index.css">
-
-  <!--
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>General T | Portfolio</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="General T's portfolio showcasing music transcription, arrangement services, and software development skills. Contact for custom projects.">
+    <meta name="keywords"
+        content="General T, musician, developer, music transcription, arrangement services, software development, Python, HTML, CSS, JavaScript, Java, C#, Batch scripting">
+    <meta name="author" content="General Tromboni">
 </head>
 
 <body>
 
-  <!--
-    - #MAIN
-  -->
-
-  <main>
-
-    <!--
-      - #SIDEBAR
-    -->
-
-    <aside class="sidebar" data-sidebar>
-
-      <div class="sidebar-info">
-
-        <figure class="avatar-box">
-          <img src="images/my-avatar.png" alt="General Tromboni" width="80">
-        </figure>
-
-        <div class="info-content">
-          <h1 class="name" title="General Tromboni">General Tromboni</h1>
-
-          <p class="title">Musician, Backend Developer</p>
+    <section class="portfolio-section">
+        <div class="header">
+            <img src="/images/pfp.png" alt="Profile Picture" class="profile-pic">
+            <div>
+                <h1>General T</h1>
+                <h2>Musician • Developer • Leader</h2>
+            </div>
         </div>
 
-      </div>
-
-      <div class="sidebar-info_more">
-
-        <div class="separator"></div>
-
-        <ul class="contacts-list">
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-
-              <a href="mailto:generaltromboni@outlook.com" class="contact-link">generaltromboni@outlook.com</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="calendar-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Birthday</p>
-
-              <time datetime="2004-22-16">November 16, 2004</time>
-            </div>
-
-          </li>
-
-        </ul>
-
-        <div class="separator"></div>
-
-        <ul class="social-list">
-
-          <li class="social-item">
-            <a href="https://discordapp.com/users/558252689721655306/" class="social-link">
-              <ion-icon name="logo-discord"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://www.youtube.com/@the_general_t" class="social-link">
-              <ion-icon name="logo-youtube"></ion-icon>
-            </a>
-          </li>
-        </ul>
-
-      </div>
-
-    </aside>
-
-
-
-
-
-    <!--
-      - #main-content
-    -->
-
-    <div class="main-content">
-
-      <!--
-        - #NAVBAR
-      -->
-
-      <nav class="navbar">
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
-          </li>
-        </ul>
-
-      </nav>
-
-
-
-
-
-      <!--
-        - #ABOUT
-      -->
-
-      <article class="about  active" data-page="about">
-
-        <header>
-          <h2 class="h2 article-title">About me</h2>
-        </header>
-
-        <section class="about-text">
-          <p>
-            Hello there! You can call me Trom!
-          </p>
-
-          <p>
-            I am a musician, mainly a brass player and percussionist.
-            I am also a backend developer, meaning I mainly work with Scripting, System Configuration/Administration and
-            even backend with Video Games such as Minecraft, Grand Theft Auto, and more!
-          </p>
-        </section>
-
-
-        <!--
-          - service
-        -->
-
-        <section class="service">
-
-          <h3 class="h3 service-title">What I offer</h3>
-
-          <ul class="service-list">
-
-            <!-- SysAdmin -->
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="/images/icon-design (1).svg" " alt=" design icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">System Administration</h4>
-
-                <p class="service-item-text">
-                  I offer System Administration Services to keep your IT systems running smoothly and securely. 
-                  I handle server setup, updates, backups, security, and troubleshooting.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="/images/icon-dev (1).svg" alt="Web development icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">MC/GTA Plugin Configuration</h4>
-
-                <p class="service-item-text">
-                  Minecraft and Grand Theft Auto server configurations, 
-                  ensuring a seamless and optimized gaming experience.
-                </p>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-
-
-        <!--
-          - clients
-        -->
-
-        <section class="clients">
-
-          <h3 class="h3 clients-title">Clients</h3>
-
-          <ul class="clients-list has-scrollbar">
-
-            <li class="clients-item">
-              <a href="https://discord.gg/savline">
-                <img src="/images/savlinenetworklogo.png" alt="client logo">
-              </a>
-              <p class="service-item-text">Savline Network<br>MC Server Manager | Interim GTA Vice City Manager</p>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="/images/questionmark.svg" alt="client logo">
-              </a>
-              <p class="service-item-text">You could be my next client! Contact me now to discuss!</p>
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-
-    </div>
-
-  </main>
-  <!--
-    - custom js link
-  -->
-  <script src="/javascript/index.js"></script>
-
-  <!--
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <div class="intro">
+            <p>
+                I am a multidisciplinary creative with a strong background in both music and software development.
+                I offer customized music transcription and arrangement services, tailored to any genre or preference.
+            </p>
+            <p>
+                As a developer, I’m fluent in:
+            <ul class="skills-list">
+                <li>Python</li>
+                <li>HTML / CSS / JavaScript</li>
+                <li>Java (including JavaFX)</li>
+                <li>C#</li>
+                <li>Batch / Shell scripting</li>
+            </ul>
+            </p>
+        </div>
+
+        <div class="contact-section">
+            <h3>Contact Me</h3>
+            <p>If you'd like to get in touch, feel free to reach out using any of the following platforms:</p>
+            <ul class="contact-list">
+                <li><strong>Email:</strong> <a href="mailto:you@example.com">generaltromboni@outlook.com</a></li>
+                <li><strong>Discord:</strong> general_tromboni</li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/The-General-T"
+                        target="_blank">github.com/the-general-t</a></li>
+                <li><strong>Telegram:</strong> <a href="https://t.me/General_Tromboni"
+                        target="_blank">@General_Tromboni</a>
+                </li>
+            </ul>
+        </div>
+
+
+    </section>
 
 </body>
 

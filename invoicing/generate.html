@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Generate Invoice</title>
+  <title>Logged In</title>
   <link rel="stylesheet" href="../css/invoicing_generate.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
@@ -17,14 +17,23 @@
       CASHIER: ... | DATE/TIME: ...
     </div>
 
-    <h1>Invoicing - Generate</h1>
+    <h1>Invoicing</h1>
 
     <div class="input-group">
       <input type="text" id="itemName" placeholder="Item Name" />
       <input type="number" id="itemPrice" placeholder="Price ($)" />
       <button id="addItemBtn">Add Item</button>
       <button id="taxexemptbtn">Add Tax Exempt</button>
+      <button id="helpme">Need Help?</button>
+      <button onclick="window.location.href = `../index.html`">Log Out</button>
     </div>
+
+    <!-- <h2 class="manager-header" id="manager-header" style="visibility: hidden;">Manager Functions</h2>
+    <div class="button-grid" id="manager-actions" style="visibility: hidden;">
+      <button class="manager" data-action="Override Price">Override Price</button>
+      <button class="manager" data-action="View Reports">View Reports</button>
+      <button class="manager" data-action="Refund Transaction">Refund Transaction</button>
+    </div> -->
 
     <div class="transaction-list" id="transactionList">
       <h2>Items</h2>
@@ -38,25 +47,15 @@
       <button id="clearTransactionBtn">Clear Transaction</button>
       <button id="completeTransactionBtn">Complete Transaction</button>
     </div>
-<div id="receiptWrapper">
-  <div id="receiptOutput" class="receipt-page">
-    <div class="receipt-header">...</div>
-    <div class="receipt-body">...</div>
-    <div class="receipt-footer">...</div>
-  </div>
-</div>
-    <button onclick="printReceipt()" class="print-btn">Print Receipt</button>
-    <button onclick="downloadReceiptPDF()">Download PDF</button>
-    <button onclick="window.location.href = `../index.html`">Log Out</button>
-
-
-    <h2 class="manager-header">Manager Functions</h2>
-    <div class="button-grid">
-      <button class="manager" data-action="Override Price">Override Price</button>
-      <button class="manager" data-action="View Reports">View Reports</button>
-      <button class="manager" data-action="Refund Transaction">Refund Transaction</button>
+    <div id="receiptWrapper" style="visibility: hidden;">
+      <div id="receiptOutput" class="receipt-page">
+        <div class="receipt-header">...</div>
+        <div class="receipt-body">...</div>
+        <div class="receipt-footer">...</div>
+      </div>
     </div>
-
+    <button onclick="printReceipt()" id="print" class="print-btn" style="visibility: hidden;">Print Receipt</button>
+    <button onclick="downloadReceiptPDF()" id="download" style="visibility: hidden;">Download PDF</button>
   </div>
 
   <script type="module" src="../javascript/Pos.js"></script>

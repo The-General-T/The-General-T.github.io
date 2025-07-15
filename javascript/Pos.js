@@ -12,6 +12,7 @@ const taxexemptbtn = document.getElementById("taxexemptbtn");
 const clearTransactionBtn = document.getElementById("clearTransactionBtn");
 const completeTransactionBtn = document.getElementById("completeTransactionBtn");
 const managerButtons = document.querySelectorAll("button.manager");
+const needHelp = document.getElementById("helpme");
 
 let items = [];
 let total = 0;
@@ -34,6 +35,10 @@ function updateHeader() {
   const date = now.toLocaleDateString();
   const time = now.toLocaleTimeString();
   header.textContent = `Operator ID: ${loggedInUsername} (${loggedInUser.role}) | Date: ${date} Time: ${time}`;
+  if (isLoggedInUserManager) {
+    document.getElementById("manager-header").style.visibility = "visible";
+    document.getElementById("manager-actions").style.visibility = "visible";
+  }
 }
 updateHeader();
 setInterval(updateHeader, 1000); // live clock every second
@@ -49,7 +54,7 @@ function addItem() {
   }
 
   items.push({ name, price });
-  total += price*1.07;
+  total += price * 1.07;
 
   renderTransaction();
   itemNameInput.value = "";
@@ -68,7 +73,7 @@ function addItemTE() {
 
   items.push({ name: ishouldntneedthis, price: 0 }); // Add tax exempt note
   items.push({ name, price });
-  
+
   total += price;
 
   renderTransaction();
@@ -134,6 +139,9 @@ function completeTransaction() {
   `;
 
   document.getElementById("receiptOutput").innerHTML = html;
+  document.getElementById("download").style.visibility = "visible";
+  document.getElementById("print").style.visibility = "visible";
+  document.getElementById("receiptWrapper").style.visibility = "visible";
 }
 
 function printReceipt() {
@@ -176,13 +184,13 @@ function downloadReceiptPDF() {
   const element = document.getElementById("receiptWrapper");
 
   const opt = {
-  margin: 0,
-  filename: `receipt-${Date.now()}.pdf`,
-  image: { type: 'jpeg', quality: 0.98 },
-  html2canvas: { scale: 2, scrollY: 0 },
-  jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-  pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
-};
+    margin: 0,
+    filename: `receipt-${Date.now()}.pdf`,
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, scrollY: 0 },
+    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+    pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+  };
 
   html2pdf().set(opt).from(element).save();
 }
@@ -198,9 +206,9 @@ function managerFunction(action) {
     // Prompt for manager override
     const usernamePrompt = prompt("Manager Username:");
     const passwordPrompt = prompt("Manager Password:");
-    
+
     const user = userManager.authenticate(usernamePrompt, passwordPrompt);
-    
+
     if (user && user.isManager) {
       alert(`Manager Override Approved: ${action}`);
       runManagerAction(action);
@@ -215,40 +223,40 @@ function runManagerAction(action) {
     case "Override Price":
       overridePricePrompt();
       break;
-      case "View Reports":
-        viewReports();
-        break;
-        case "Refund Transaction":
-          refundTransaction();
-          break;
-          default:
-            alert("Unknown manager action");
-          }
-        }
-        
-        // Demo: Override Price
-        function overridePricePrompt() {
-          if (items.length === 0) {
-            alert("No items to override price for.");
-            return;
-          }
-          
-          const indexStr = prompt(`Enter item number to override (1 to ${items.length}):`);
-          const index = parseInt(indexStr) - 1;
-          
+    case "View Reports":
+      viewReports();
+      break;
+    case "Refund Transaction":
+      refundTransaction();
+      break;
+    default:
+      alert("Unknown manager action");
+  }
+}
+
+// Demo: Override Price
+function overridePricePrompt() {
+  if (items.length === 0) {
+    alert("No items to override price for.");
+    return;
+  }
+
+  const indexStr = prompt(`Enter item number to override (1 to ${items.length}):`);
+  const index = parseInt(indexStr) - 1;
+
   if (isNaN(index) || index < 0 || index >= items.length) {
     alert("Invalid item number.");
     return;
   }
-  
+
   const newPriceStr = prompt(`Enter new price for "${items[index].name}":`);
   const newPrice = parseFloat(newPriceStr);
-  
+
   if (isNaN(newPrice) || newPrice < 0) {
     alert("Invalid price.");
     return;
   }
-  
+
   items[index].price = newPrice;
   recalculateTotal();
   renderTransaction();
@@ -273,11 +281,16 @@ function recalculateTotal() {
   total = items.reduce((sum, item) => sum + item.price, 0);
 }
 
+function helpMenu() {
+  window.open("helpscreen.html", "Help Menu", "width=400,height=400,sizable=no");
+}
+
 // Event listeners
 addItemBtn.addEventListener("click", addItem);
 taxexemptbtn.addEventListener("click", addItemTE);
 clearTransactionBtn.addEventListener("click", clearTransaction);
 completeTransactionBtn.addEventListener("click", completeTransaction);
+needHelp.addEventListener("click", helpMenu);
 
 managerButtons.forEach(button => {
   button.addEventListener("click", () => {
@@ -291,3 +304,4 @@ window.addItemTE = addItemTE;
 window.clearTransaction = clearTransaction;
 window.completeTransaction = completeTransaction;
 window.downloadReceiptPDF = downloadReceiptPDF;
+window.needHelp = helpMenu;
